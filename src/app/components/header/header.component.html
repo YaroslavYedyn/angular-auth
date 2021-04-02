@@ -1,0 +1,12 @@
+<header>
+  Auth task
+  <a [routerLink]="''">Home</a>
+  <div class="auth">
+    <div class="account" *ngIf="this.authService.isAuthenticated()"
+         [routerLink]="['account']">
+      <img [src]="accountImg" alt="">
+    </div>
+    <a
+      (click)="this.authService.isAuthenticated()?logout():login()">{{this.authService.isAuthenticated() ? 'Logout' : 'Login'}}</a>
+  </div>
+</header>

@@ -1,0 +1,14 @@
+<div class="login">
+
+  <div class="wrapper">
+    <p class="title">Authorization</p>
+    <form [formGroup]="form" method="post" class="form" (ngSubmit)=login()>
+      <input [formControl]="email" class="email" type="text" placeholder="Please enter email">
+      <input [formControl]="password" class="password" type="password" placeholder="Please enter password">
+      <input class="login-btn" type="submit" value="Login">
+      <div *ngIf="error">{{error|json}}</div>
+      <div>{{message}}</div>
+      <p class="forgot">forgot password? <a (click)="forgot()">click</a></p>
+    </form>
+  </div>
+</div>

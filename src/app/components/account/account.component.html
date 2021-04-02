@@ -1,0 +1,38 @@
+<div *ngIf="user" class="account"
+     [ngStyle]="{'background-image' : 'linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.6)), url('+accountBack+')'}">
+  <div class="info">
+    <div class="account-img-wrapper">
+      <div class="account-img">
+        <img *ngIf="!!user.avatar" [src]="avatar" alt="">
+      </div>
+      <input (change)="handleUpdateAvatar($event.target)" type="file">
+    </div>
+    <div *ngIf="!editStatus" class="account-info">
+      <div class="attribute-account">username <p>{{user.username}}</p></div>
+      <div class="attribute-account">email <p>{{user.email}}</p></div>
+      <div class="attribute-account">name <p>{{user.name ? user.name : '----'}}</p></div>
+      <div class="attribute-account">age <p>{{user.age ? user.age : '----'}}</p></div>
+      <button class="edit" (click)="editStatus=!editStatus">edit</button>
+      <button class="edit">remove account</button>
+    </div>
+    <div *ngIf="editStatus" class="account-edit">
+      <form class="edit-form" [formGroup]="editForm" (ngSubmit)="edit()">
+        <label for="username">
+          username
+          <input id="username" [formControl]="username" [defaultValue]="user.username" type="text">
+        </label>
+        <label for="name">
+          name
+          <input id="name" [formControl]="name" [defaultValue]="user.name" type="text">
+        </label>
+        <label for="age">
+          age
+          <input id="age" [formControl]="age" [defaultValue]="user.age" type="number">
+        </label>
+        <input class="edit" type="submit" value="Edit">
+      </form>
+      <button class="edit" (click)="editStatus=!editStatus">cancel</button>
+    </div>
+
+  </div>
+</div>

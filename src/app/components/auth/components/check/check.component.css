@@ -1,0 +1,29 @@
+.check {
+  width: 100%;
+  min-height: 100vh;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-position: top center;
+  background-size: cover;
+}
+
+.check p {
+  width: 70%;
+  font-size: 48px;
+  color: white;
+  font-weight: 700;
+}
+
+.check a {
+  margin-top: 10px;
+  color: #f8104d;
+  font-size: 22px;
+}
+
+.check a:hover {
+  border-bottom: 1px solid #f8104d;
+}
