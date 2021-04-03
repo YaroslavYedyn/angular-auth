@@ -59,4 +59,9 @@ export class UserService {
     console.log(password);
     return this.http.post<void>(`${this.URL}${endpoint.change_password}`, {...password, forgot_token: token});
   }
+
+  removeAccount(id: string): Observable<void> {
+    console.log(id);
+    return this.http.delete<void>(`${this.URL}${endpoint.users}${id}`);
+  }
 }

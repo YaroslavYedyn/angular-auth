@@ -13,7 +13,7 @@
       <div class="attribute-account">name <p>{{user.name ? user.name : '----'}}</p></div>
       <div class="attribute-account">age <p>{{user.age ? user.age : '----'}}</p></div>
       <button class="edit" (click)="editStatus=!editStatus">edit</button>
-      <button class="edit">remove account</button>
+      <button class="edit" (click)="remove()">remove account</button>
     </div>
     <div *ngIf="editStatus" class="account-edit">
       <form class="edit-form" [formGroup]="editForm" (ngSubmit)="edit()">

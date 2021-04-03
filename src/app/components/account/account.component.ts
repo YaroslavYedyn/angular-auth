@@ -6,6 +6,7 @@ import {UserService} from '../../services';
 import {IUser} from '../../models/IUser';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import defineProperty = Reflect.defineProperty;
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-account',
@@ -28,7 +29,7 @@ export class AccountComponent implements OnInit {
     age: this.age
   });
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -56,6 +57,12 @@ export class AccountComponent implements OnInit {
       this.user = value;
       this.avatar = this.URL + value.avatar;
       this.editStatus = !this.editStatus;
+    });
+  }
+
+  remove(): void {
+    this.userService.removeAccount(this.userService.getUserId()).subscribe(value => {
+      this.router.navigate(['']);
     });
   }
 }
