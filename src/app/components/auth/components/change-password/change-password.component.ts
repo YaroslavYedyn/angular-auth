@@ -31,7 +31,7 @@ export class ChangePasswordComponent implements OnInit {
   changePassword(): void {
     console.log(this.token);
     if (this.repeatPassword.value === this.password.value) {
-      this.userService.changePassword(this.form.getRawValue(), this.token).subscribe(value => {
+      this.userService.forgotPassword(this.form.getRawValue(), this.token).subscribe(value => {
         this.router.navigate(['auth/login']);
         console.log(value);
       }, error1 => {

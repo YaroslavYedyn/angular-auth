@@ -1,1 +1,5 @@
-<p>error works!</p>
+<div class="error"
+     [ngStyle]="{'background-image' : 'linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.6)), url('+errorBack+')'}">
+  <p>Oops ... an error occurred</p>
+  <a [routerLink]="''">Home page</a>
+</div>

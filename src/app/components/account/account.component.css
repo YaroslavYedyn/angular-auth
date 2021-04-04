@@ -94,3 +94,40 @@
   margin-top: 15px;
 }
 
+.change_password {
+  width: 45%;
+  height: 500px;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.change-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.change-form input {
+  width: 300px;
+  height: 30px;
+  border-radius: 3px;
+  margin: 20px 0;
+}
+
+.accept-btn {
+  text-transform: uppercase;
+  width: 120px;
+  height: 30px;
+  margin: 20px 0;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+}
+
+.accept-btn:hover {
+  opacity: 0.7;
+}
+
+

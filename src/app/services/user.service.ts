@@ -6,7 +6,7 @@ import {IUser} from '../models/IUser';
 
 enum endpoint {
   activate = 'email/activate',
-  change_password = 'users/forgotPassword',
+  forgot_password = 'users/forgotPassword',
   forgot = 'email/forgot',
   users = 'users/',
 };
@@ -54,10 +54,12 @@ export class UserService {
     return this.http.post<any>(`${this.URL}${endpoint.forgot}`, email);
   }
 
-  changePassword(password, token): Observable<void> {
-    console.log(token);
-    console.log(password);
-    return this.http.post<void>(`${this.URL}${endpoint.change_password}`, {...password, forgot_token: token});
+  forgotPassword(password, token): Observable<void> {
+    return this.http.post<void>(`${this.URL}${endpoint.forgot_password}`, {...password, forgot_token: token});
+  }
+
+  changePassword(object, id): Observable<void> {
+    return this.http.patch<void>(`${this.URL}${endpoint.users}${id}`, object);
   }
 
   removeAccount(id: string): Observable<void> {

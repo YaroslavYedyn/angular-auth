@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+
+// @ts-ignore
+import errorBack from '../../image/error-back.jpg';
 
 @Component({
   selector: 'app-error',
@@ -6,8 +9,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./error.component.css']
 })
 export class ErrorComponent implements OnInit {
+  errorBack = errorBack;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

@@ -11,6 +11,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AccountComponent} from './components/account/account.component';
 import {TokenInterceptorService} from './services/token-interceptor.service';
 import {ReactiveFormsModule} from '@angular/forms';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import {ReactiveFormsModule} from '@angular/forms';
     FooterComponent,
     HomeComponent,
     AccountComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,

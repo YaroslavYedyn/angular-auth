@@ -19,6 +19,7 @@ export class AccountComponent implements OnInit {
   URL = 'http://localhost:5050/';
   avatar;
   editStatus = false;
+  changePasswordStatus = false;
 
   username = new FormControl('', [Validators.minLength(4)]);
   name = new FormControl('');
@@ -27,6 +28,14 @@ export class AccountComponent implements OnInit {
     username: this.username,
     name: this.name,
     age: this.age
+  });
+
+  oldPassword = new FormControl('', [Validators.minLength(8), Validators.required]);
+  newPassword = new FormControl('', [Validators.minLength(8), Validators.required]);
+  repeatNewPassword = new FormControl('', [Validators.minLength(8), Validators.required]);
+  changePasswordForm = new FormGroup({
+    old_password: this.oldPassword,
+    new_password: this.newPassword,
   });
 
   constructor(private userService: UserService, private router: Router) {
@@ -64,5 +73,16 @@ export class AccountComponent implements OnInit {
     this.userService.removeAccount(this.userService.getUserId()).subscribe(value => {
       this.router.navigate(['']);
     });
+  }
+
+  changePassword(): void {
+    if (this.newPassword.value === this.repeatNewPassword.value) {
+      const id: string = this.userService.getUserId();
+      this.userService.changePassword({...this.changePasswordForm.getRawValue(), user_id: id}, id).subscribe(value => {
+        this.changePasswordStatus = false;
+      });
+    } else {
+      alert('Passwords do not match');
+    }
   }
 }

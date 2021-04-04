@@ -7,13 +7,25 @@
       </div>
       <input (change)="handleUpdateAvatar($event.target)" type="file">
     </div>
-    <div *ngIf="!editStatus" class="account-info">
+    <div *ngIf="!editStatus&&!changePasswordStatus" class="account-info">
       <div class="attribute-account">username <p>{{user.username}}</p></div>
       <div class="attribute-account">email <p>{{user.email}}</p></div>
       <div class="attribute-account">name <p>{{user.name ? user.name : '----'}}</p></div>
       <div class="attribute-account">age <p>{{user.age ? user.age : '----'}}</p></div>
       <button class="edit" (click)="editStatus=!editStatus">edit</button>
+      <button class="edit" (click)="changePasswordStatus=!changePasswordStatus">change password</button>
       <button class="edit" (click)="remove()">remove account</button>
+    </div>
+    <div *ngIf="changePasswordStatus" class="change_password">
+      <form [formGroup]="changePasswordForm" class="change-form" (ngSubmit)="changePassword()">
+        <input [formControl]="oldPassword" placeholder="Please enter password" type="password">
+        <input [formControl]="newPassword" placeholder="Please enter new password" type="password">
+        <input [formControl]="repeatNewPassword" placeholder="Repeat new password" type="password">
+        <input class="accept-btn" value="Accept" type="submit">
+      </form>
+      <div>
+        <button class="edit" (click)="changePasswordStatus=!changePasswordStatus">cancel</button>
+      </div>
     </div>
     <div *ngIf="editStatus" class="account-edit">
       <form class="edit-form" [formGroup]="editForm" (ngSubmit)="edit()">

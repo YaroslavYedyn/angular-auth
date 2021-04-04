@@ -3,6 +3,7 @@ import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import {HomeComponent} from './components/home/home.component';
 import {AccountComponent} from './components/account/account.component';
+import {NotFoundComponent} from './components/not-found/not-found.component';
 
 
 const routes: Routes = [
@@ -10,6 +11,7 @@ const routes: Routes = [
   {path: 'account', component: AccountComponent},
   {path: 'auth', loadChildren: () => import('./components/auth/auth.module').then((m) => m.AuthModule)},
   {path: 'error', loadChildren: () => import('./components/error/error.module').then((m) => m.ErrorModule)},
+  {path: '**', component: NotFoundComponent},
 ];
 
 @NgModule({
